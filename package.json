@@ -1,0 +1,37 @@
+{
+  "name": "curriki-interactive-video",
+  "version": "1.17.0",
+  "description": "Put texts, tasks and other medias on top of your video.",
+  "private": true,
+  "scripts": {
+    "test": "ava",
+    "build": "cross-env NODE_ENV='production' webpack -p",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h5p/h5p-interactive-video.git"
+  },
+  "keywords": [
+    "h5p",
+    "content-type"
+  ],
+  "author": "Joubel",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "cross-env": "^5.0.1",
+    "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "h5p-lib-controls": "0.0.14",
+    "resolve-url-loader": "^2.1.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.0.0"
+  }
+}
