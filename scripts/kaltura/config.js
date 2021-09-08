@@ -1,5 +1,5 @@
 const KalturaConfig = {
-    'apiPath' : 'http://curriki-studio-api.local/api/v1/kaltura/get-media-entry-list',
+    'apiPath' : '/api/v1/kaltura/get-media-entry-list',
 }
 
 const YoutubeConfig = {
