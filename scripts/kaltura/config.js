@@ -1,3 +1,6 @@
+const KalturaConfig = {
+    'apiPath' : '/api/v1/kaltura/get-media-entry-list',
+}
 
 const YoutubeConfig = {
     'channelId' : 'YOUTUBE_CHANNEL_ID',
