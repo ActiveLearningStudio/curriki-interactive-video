@@ -80,16 +80,6 @@ if (typeof H5PEditor !== 'undefined') {
         var totalVideoCount;
         var kalturaPageLength = 5;
         async function getPlaylistData(pageSize, pageIndex, searchText) {
-          let getDirectory = window.H5PIntegration.loadedJs;
-          let fullDirectoryPath;
-          getDirectory.forEach(function(value, index) {
-            if(value.includes("custom-integration.js")) {
-              fullDirectoryPath = value;
-              return false;
-            }
-          });
-
-          let h5pDirectoryPath = fullDirectoryPath.split("scripts");
           $.ajax({
             type: "GET",
             dataType: "json",
@@ -98,7 +88,7 @@ if (typeof H5PEditor !== 'undefined') {
               pageIndex: pageIndex,
               searchText: searchText,
             },
-            url: h5pDirectoryPath[0] + "KalturaGeneratedAPIClientsPHP/GetKalturaMediaEntry.php",
+            url: KalturaConfig.apiPath,
             success: function (data) {
               // data = $.parseJSON(data);
               // console.log(data);
