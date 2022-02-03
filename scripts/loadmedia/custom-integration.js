@@ -97,9 +97,7 @@ if (typeof H5PEditor !== 'undefined') {
               searchText: searchText
             },
             url: KalturaConfig.apiPath,
-            success: function (data) { console.log('respData:',data);
-              // data = $.parseJSON(data);
-              // console.log(data);
+            success: function (data) {
               if (data.results) {
                 var results = data.results;
                 totalVideoCount = results.totalCount;
