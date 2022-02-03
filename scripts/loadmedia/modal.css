@@ -19,7 +19,7 @@
     padding: 20px;
     border: 1px solid #888;
     max-width: 800px;
-    height: 300px;
+    height: 500px;
     overflow: auto;
   }
   
@@ -102,14 +102,13 @@ input[name="tabset"]:checked + label {
 
 #kaltura:checked ~ section#kalturaPlaylist,
 #youtube:checked ~ section#youtubePlaylist,
-#vimeo:checked ~ section#vimeoPlaylist {
+#vimeo:checked ~ section#vimeoPlaylist,
+#lti-tool-settings:checked ~ section#ltiToolPlaylist {
   display: block;
   animation-name: inUp;
   animation-timing-function: ease-in-out;
   animation-duration: .6s;
 }
-
-
 
 .loadPlaylist {
     background-color: #0a78d1;
@@ -244,4 +243,51 @@ input[name="tabset"]:checked + label {
     font-weight: 600;
     margin-top: 5px;
     display: block;
+}
+
+.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 57px;
+    padding: 10px 38px 10px 16px;
+    background: #fff url("select-arrows.svg") no-repeat right 16px center;
+    background-size: 10px;
+    transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.custom-select:hover {
+    border: 1px solid #999;
+}
+.custom-select:focus {
+    border: 1px solid #999;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+    outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+    display:none;
+}
+
+/* Loader */
+.loader {  
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  margin: 50px 0 0 370px
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
