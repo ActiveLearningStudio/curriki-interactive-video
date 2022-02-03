@@ -22,10 +22,10 @@
       "path": "dist/h5p-interactive-video.js"
     },
     {
-      "path": "scripts/kaltura/custom-integration.js"
+      "path": "scripts/loadmedia/custom-integration.js"
     },
     {
-      "path": "scripts/kaltura/config.js"
+      "path": "scripts/loadmedia/config.js"
     }
   ],
   "preloadedCss": [
@@ -33,7 +33,7 @@
       "path": "dist/h5p-interactive-video.css"
     },
     {
-      "path": "scripts/kaltura/modal.css"
+      "path": "scripts/loadmedia/modal.css"
     }
   ],
   "preloadedDependencies": [

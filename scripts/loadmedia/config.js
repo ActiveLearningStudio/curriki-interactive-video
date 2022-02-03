@@ -1,5 +1,5 @@
 const KalturaConfig = {
-    'apiPath' : '/api/v1/kaltura/get-media-entry-list',
+    'apiPath' : '/api/api/v1/kaltura/get-media-entry-list',
 }
 
 const YoutubeConfig = {
@@ -15,3 +15,10 @@ const VimeoConfig = {
     'channelId' : 'CHANNEL_ID', // NUMBERS ONLY
     'perPage' : 5
 }
+
+/*const LTIToolSettings = {
+    apiPath:{
+        getLTIToolList : '/api/api/v1/lti-tool-settings/get-list',
+        getLTIToolSearch : '/api/api/v1/lti-tool-settings/get-lti-tool-search'
+    }
+}*/

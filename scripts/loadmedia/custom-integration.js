@@ -25,6 +25,8 @@ if (typeof H5PEditor !== 'undefined') {
         '<label for="youtube">Youtube</label>' +
         '<input type="radio" name="tabset" id="vimeo" aria-controls="vimeoPlaylist">' +
         '<label for="vimeo">Vimeo</label>' +
+        /*'<input type="radio" name="tabset" id="lti-tool-settings" aria-controls="ltiToolPlaylist">' +
+        '<label for="lti-tool-settings">LTI Tools</label>' +*/
         '<input type="hidden" id="current_page" />' +
         '<input type="hidden" id="show_per_page" />' +
         '<section id="kalturaPlaylist" class="tab-panel">' +
@@ -54,6 +56,12 @@ if (typeof H5PEditor !== 'undefined') {
         '<ul class="pagination justify-content-center pagination-sm vimeo-pagination" id="vimeo_navigation"></ul>' +
         "</nav>" +
         "</section>" +
+        '<section id="ltiToolPlaylist" class="tab-panel">' +
+        '<div class="search-playlist">' +
+        '<select class="custom-select" id="ltiToolSettingsSelect"></select>' +
+        "</div>" +
+        '<div id="loaderDiv" class=""><nav><div id="lti-tool-settings-content" class="play-lists"></div></nav></div>' +
+        "</section>" +
         "</div>" +
         "</div>" +
         "</div>";
@@ -81,17 +89,15 @@ if (typeof H5PEditor !== 'undefined') {
         var kalturaPageLength = 5;
         async function getPlaylistData(pageSize, pageIndex, searchText) {
           $.ajax({
-            type: "GET",
+            type: "POST",
             dataType: "json",
             data: {
               pageSize: pageSize,
               pageIndex: pageIndex,
-              searchText: searchText,
+              searchText: searchText
             },
             url: KalturaConfig.apiPath,
             success: function (data) {
-              // data = $.parseJSON(data);
-              // console.log(data);
               if (data.results) {
                 var results = data.results;
                 totalVideoCount = results.totalCount;
@@ -121,6 +127,17 @@ if (typeof H5PEditor !== 'undefined') {
                 console.log(data.error);
               }
             },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              var errorMessage = '';
+              if (XMLHttpRequest.responseJSON.message) {
+                errorMessage = XMLHttpRequest.responseJSON.message;
+              } else if (XMLHttpRequest.responseJSON.errors){
+                errorMessage = XMLHttpRequest.responseJSON.errors[0];
+              }              
+              var node =
+                  '<div class="play-item" data-filter-item><span class="kaltura-video-title">'+errorMessage+'</span></div>';
+                document.getElementById("modalContent").innerHTML = node;
+            }
           });
         }
 
@@ -305,8 +322,7 @@ if (typeof H5PEditor !== 'undefined') {
             }
             // }
           });
-        }
-
+        }        
         getPlaylistData(kalturaPageLength, listIndex, "");
         setTimeout(function () {
           handlePagination(kalturaPageLength, totalVideoCount, "page_navigation");
@@ -318,6 +334,84 @@ if (typeof H5PEditor !== 'undefined') {
             handlePagination(kalturaPageLength, totalVideoCount, "page_navigation");
           }, 3000);
         });
+        
+        $(document).on("click", "#lti-tool-settings", function () {
+          getLTIToolSettingsList();
+        });
+
+        $(document).on("change", "#ltiToolSettingsSelect", function () {
+          if ($(this).val() != '' && $(this).val() > 0) {            
+            getLTIToolSearchForm($(this).val());
+          } else {
+            $('#loaderDiv').attr('class', '');
+            $('#lti-tool-settings-content').html('');
+          }
+        });       
+
+        async function getLTIToolSettingsList() {
+          $('#loaderDiv').attr('class', 'loader');
+          $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: LTIToolSettings.apiPath.getLTIToolList,
+            success: function (data) {
+              if (Object.keys(data.data.lti_tool_settings).length > 0) {
+                $('#loaderDiv').attr('class', '');
+                $('#ltiToolSettingsSelect').val("");
+                $('#ltiToolSettingsSelect').text("");
+                $('#ltiToolSettingsSelect')
+                .append($("<option></option>")
+                    .attr("value",0)
+                    .text("Please Select LTI Tool")); 
+                $.each(data.data.lti_tool_settings, function(key, value) {
+                   $('#ltiToolSettingsSelect')
+                   .append($("<option></option>")
+                    .attr("value",key)                    
+                    .text(value)); 
+                });
+              }else{
+                $('#ltiToolSettingsSelect').val("");
+                $('#ltiToolSettingsSelect').text("");
+                $('#ltiToolSettingsSelect')
+                .append($("<option></option>")
+                    .attr("value","")
+                    .text("No LTI Tool Found")); 
+              }
+            },
+          });
+        }
+
+        async function getLTIToolSearchForm(id) {
+          $('#loaderDiv').attr('class', 'loader');
+          $.ajax({
+            type: "GET",
+            dataType: "json",
+            data:{
+              id: id
+            },
+            url: LTIToolSettings.apiPath.getLTIToolSearch,
+            success: function (data) {              
+              var html = '<iframe name="iframeContent" id="iframeContent" width="100%" height="1000px" frameBorder="0"></iframe><form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="'+data.launchUrl+'" target="iframeContent">';
+                        $.each(data.results, function(key, value) {
+                           html += '<input type="hidden" name="'+key+'" value="'+value+'">';
+                        });     
+                        html +='</form>';
+                        $('#lti-tool-settings-content').html(html);
+                        $('#ltiLaunchForm').trigger('submit');
+                  $('#loaderDiv').attr('class', '');      
+              
+              // $.ajax({
+              //   type: "POST",
+              //   data: data.results,
+              //   url: data.launchUrl,
+              //   success: function (data) {
+              //     $('#loaderDiv').attr('class', '');
+              //     $('#lti-tool-settings-content').html(data);
+              //   }
+              // });
+            },
+          });
+        }
 
         $(document).on("click", "#kaltura", function () {
           getPlaylistData(kalturaPageLength, listIndex, "");
