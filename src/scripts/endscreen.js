@@ -111,10 +111,10 @@ class Endscreen extends H5P.EventDispatcher {
     }).append($('<div/>', {'class': `${ENDSCREEN_STYLE_BASE}-introduction`})
         .append($('<div/>', {'class': `${ENDSCREEN_STYLE_BASE}-star-symbol`}))
         .append($('<div/>', {'class': `${ENDSCREEN_STYLE_BASE}-introduction-container`})
-          .append([$endscreenIntroductionTitle, this.$endscreenIntroductionText, this.$submitButtonContainer])))
+          .append([$endscreenIntroductionTitle, this.$endscreenIntroductionText])))
       .append($('<div/>', {'class': `${ENDSCREEN_STYLE_BASE}-overview`})
         .append(this.$endscreenOverviewTitle)
-        .append(this.$endscreenBottomTable));
+        .append(this.$endscreenBottomTable, this.$submitButtonContainer));
   }
 
   /**
