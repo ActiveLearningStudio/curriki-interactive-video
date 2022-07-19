@@ -129,8 +129,8 @@ function Interaction(parameters, player, previousState) {
 
 
   var isLabelRelevant = (library !== 'H5P.Nil' && parameters.displayType === 'button');
-  var title = [action.params.contentName, isLabelRelevant ? stripTags(parameters.label) : '', parameters.libraryTitle]
-    .filter(nonEmptyString)[0];
+  var title = [action.params.contentName, isLabelRelevant ? stripTags(parameters.label) : '', library === 'H5P.Link' && action.params.title !== undefined  ? action.params.title : parameters.libraryTitle]
+      .filter(nonEmptyString)[0];
 
   // Detect custom html class for interaction.
   var classes;
@@ -462,6 +462,7 @@ function Interaction(parameters, player, previousState) {
    */
   var openDialog = function (checkScore) {
     const $dialogWrapper = player.$container.find('.h5p-dialog-wrapper');
+    const $titleBar = $dialogWrapper.find('.h5p-dialog-titlebar');
 
     if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
       instance.setActivityStarted();
@@ -590,6 +591,15 @@ function Interaction(parameters, player, previousState) {
       if (instance) {
         instance.trigger('hide');
       }
+
+      // Move sound button to its original place
+      const $titleBar = $dialogWrapper.find('.h5p-dialog-titlebar');
+      const $sound = $titleBar.find('.h5p-sc-sound-control');
+
+      if ($sound.length) {
+        const $dialogInnerWrapper = $dialogWrapper.find('.h5p-sc-set-wrapper');
+        $dialogInnerWrapper.append($sound);
+      }
     };
     // A dialog can be closed only once
     player.dnb.dialog.once('close', dialogCloseHandler);
@@ -634,16 +644,16 @@ function Interaction(parameters, player, previousState) {
     else {
       // Position dialog. Use medium dialog for all interactive dialogs.
       if (!player.isMobileView) {
+        let dialogSize = null;
+
         // Set size and type of dialog
         if (library === 'H5P.FreeTextQuestion') {
-          player.dnb.dialog.position($interaction, {width: self.dialogWidth / 16}, 'big');
+          dialogSize = 'big';
         }
         else if (!(library === 'H5P.Text' || library === 'H5P.Table')) {
-          player.dnb.dialog.position($interaction, {width: self.dialogWidth / 16}, 'medium');
+          dialogSize = 'medium';
         }
-        else {
-          player.dnb.dialog.position($interaction, {width: self.dialogWidth / 16}, null);
-        }
+        player.dnb.dialog.position($interaction, {width: self.dialogWidth / 16}, dialogSize);
       }
     }
 
@@ -659,6 +669,23 @@ function Interaction(parameters, player, previousState) {
         }
         lastHeight = height;
       });
+    }
+
+    // Move sound button to titlebar and this is where we have close button as well
+    $titleBar.find('.h5p-sc-sound-control').remove();
+    if ($dialogWrapper.find('.h5p-sc-sound-control').length) {
+      const $sound = $dialogWrapper.find('.h5p-sc-sound-control');
+      const $close = $dialogWrapper.find('.h5p-dialog-close');
+
+      // Check that close button is exist and visible
+      if ($close.length && $close.css('display') !== 'none') {
+        // multiply 4 time means 2 times button size then two times paddings
+        const rightPos = ((parseFloat($close.css('right')) * 2) + (parseFloat($close.css('padding-right')) * 2));
+        $sound.css({
+          right: rightPos + 'px'
+        });
+      }
+      $titleBar.append($sound);
     }
 
     setTimeout(function () {

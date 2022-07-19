@@ -129,12 +129,12 @@
                     "H5P.Image 1.1",
                     "H5P.Summary 1.10",
                     "H5P.SingleChoiceSet 1.11",
-                    "H5P.MultiChoice 1.14",
-                    "H5P.TrueFalse 1.6",
-                    "H5P.Blanks 1.12",
-                    "H5P.DragQuestion 1.13",
-                    "H5P.MarkTheWords 1.9",
-                    "H5P.DragText 1.8",
+                    "H5P.MultiChoice 1.16",
+                    "H5P.TrueFalse 1.8",
+                    "H5P.Blanks 1.14",
+                    "H5P.DragQuestion 1.14",
+                    "H5P.MarkTheWords 1.11",
+                    "H5P.DragText 1.10",
                     "H5P.GoToQuestion 1.3",
                     "H5P.IVHotspot 1.2",
                     "H5P.Questionnaire 1.3",
@@ -770,7 +770,7 @@
         "type": "text",
         "label": "Mute title",
         "importance": "low",
-        "default": "Mute",
+        "default": "Mute, currently unmuted",
         "optional": true
       },
       {
@@ -778,7 +778,7 @@
         "type": "text",
         "label": "Unmute title",
         "importance": "low",
-        "default": "Unmute",
+        "default": "Unmute, currently muted",
         "optional": true
       },
       {
@@ -859,6 +859,14 @@
         "label": "Default label for continue video button",
         "importance": "low",
         "default": "Continue with video",
+        "optional": true
+      },
+      {
+        "name": "more",
+        "type": "text",
+        "label": "Default label for more player options",
+        "importance": "low",
+        "default": "More player options",
         "optional": true
       },
       {
@@ -1004,6 +1012,15 @@
         "label": "Submit screen information",
         "importance": "low",
         "default": "You have answered @answered questions, click below to submit your answers.",
+        "description": "@answered will be replaced by the number of answered questions.",
+        "optional": true
+      },
+      {
+        "name": "endcardInformationOnSubmitButtonDisabled",
+        "type": "text",
+        "label": "Submit screen information when submit button is disabled",
+        "importance": "low",
+        "default": "You have answered @answered questions.",
         "description": "@answered will be replaced by the number of answered questions.",
         "optional": true
       },

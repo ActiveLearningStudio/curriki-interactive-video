@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "Lähdekieli, pakollinen tekstityksille",
+                        "default": "en",
                         "description": "Täytyy olla BCP 47 -muotoinen, esimerkiksi en,fi,es,sv... Jos Tekstitykset on valittu tekstiraidan tyypiksi, on lähdekieli määriteltävä."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "Ulkoasu",
                     "fields": [
                       {
-                        "label": "Taustaväri"
+                        "label": "Taustaväri",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "Varjostus",
@@ -312,11 +314,11 @@
         },
         {
           "label": "Vaimenna",
-          "default": "Vaimenna"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "Ääni päälle",
-          "default": "Ääni päälle"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "Videon laatu",
@@ -357,6 +359,10 @@
         {
           "label": "Videossa eteenpäin jatkaminen",
           "default": "Jatka videon katsomista"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "Aseta toistonopeus",
@@ -426,6 +432,11 @@
           "label": "Yhteenvetonäkymän otsikko",
           "default": "Vastattu @answered kysymykseen",
           "description": "muuttuja @answered korvataan automaattisesti vastattujen kysymysten lukumäärällä"
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered will be replaced by the number of answered questions."
         },
         {
           "label": "Yhteenvetonäkymän tiedot",

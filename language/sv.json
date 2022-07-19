@@ -42,7 +42,7 @@
                     "fields": [
                       {
                         "label": "Spåretikett",
-                        "description": "Används om du har flera spår som användaren behöver välja blan. Exempelvis kan 'Spanska' vara etiketten för ett textspår på spanska.",
+                        "description": "Används om du har flera spår som användaren behöver välja bland. Exempelvis kan 'Spanska' vara etiketten för ett textspår på spanska.",
                         "default": "Undertexter"
                       },
                       {
@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "Källspråk, måste definieras för undertexter",
+                        "default": "en",
                         "description": "Måste vara en giltig BCP 47 språktagg. Om 'Undertexter' är vald textspårtyp, så ska källspråket för spåret definieras."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "Visuella effekter",
                     "fields": [
                       {
-                        "label": "Bakgrundsfärg"
+                        "label": "Bakgrundsfärg",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "Skugga",
@@ -223,7 +225,7 @@
                 ]
               }
             },
-            {},	
+            {},
             {}
           ]
         },
@@ -312,11 +314,11 @@
         },
         {
           "label": "Titel för ljud av",
-          "default": "Ljud av"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "Titel för ljud på",
-          "default": "Ljud på"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "Titel för videokvalitet",
@@ -357,6 +359,10 @@
         {
           "label": "Standardetikett för fortsätt med video",
           "default": "Fortsätt med video"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "Ange uppspelningshastighet",
@@ -426,6 +432,11 @@
           "label": "Titel på inlämningssida",
           "default": "@answered frågor besvarade",
           "description": "@answered kommer ersättas med antalet besvarade frågor."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered will be replaced by the number of answered questions."
         },
         {
           "label": "Information på inlämningssida",

@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "字幕のソース言語を定義する必要があります。",
+                        "default": "en",
                         "description": "有効な BCP 47 言語タグでなければなりません。もしテキストトラックのタイプとして「字幕」 が選択されたの場合は、トラックのソース言語が定義されなければなりません。"
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "クリックしてください",
                     "fields": [
                       {
-                        "label": "背景色"
+                        "label": "背景色",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "ボックスシャドウ",
@@ -312,11 +314,11 @@
         },
         {
           "label": "ミュートのタイトル",
-          "default": "ミュート"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "ミュートを解除のタイトル",
-          "default": "ミュートを解除"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "ビデオ品質のタイトル",
@@ -357,6 +359,10 @@
         {
           "label": "ビデを続行ボタンの既定のラベル",
           "default": "ビデオを続行"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "再生速度を設定",
@@ -430,6 +436,11 @@
         {
           "label": "Submit screen information",
           "default": "You have answered @answered questions, click below to submit your answers.",
+          "description": "@answered will be replaced by the number of answered questions."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
           "description": "@answered will be replaced by the number of answered questions."
         },
         {

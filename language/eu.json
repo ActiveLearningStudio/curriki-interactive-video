@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "Iturburuaren hizkuntza, azpitituluentzat definitu behar da",
+                        "default": "en",
                         "description": "Baliozko BCP 47 hizkuntza etiketa izan behar du. Aukeratutako testu-pista 'Azpitituluak' bada, pistaren iturburuko hizkuntza definitu behar da."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "Ikusizkoak",
                     "fields": [
                       {
-                        "label": "Atzeko planoaren kolorea"
+                        "label": "Atzeko planoaren kolorea",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "Kutxaren itzala",
@@ -216,7 +218,7 @@
                       },
                       {
                         "label": "Ikusi",
-                        "description": "Erakutsi interakzioan klik egin daitekeela ertz bat eta ikono bat gehituz."
+                        "description": "Erakutsi interakzioan klik egin daitekeela ertz bat eta ikono bat gehituz"
                       }
                     ]
                   }
@@ -240,7 +242,7 @@
       ]
     },
     {
-      "label": "Portaera-ezarpenak",
+      "label": "Portaeraren ezarpenak",
       "fields": [
         {
           "label": "Hasi bideoa une honetan",
@@ -255,8 +257,8 @@
           "description": "Egiaztatzen du bideoa begizta moduan erreproduzitzen dela"
         },
         {
-          "label": "Ezeztatu \"Erakutsi soluzioa\" botoia",
-          "description": "Opzio honek adierazten du \"Erakutsi soluzioa\" botoia erakutsi behar den galdera guztietan, bat ere ez edo galdera bakoitzerako ezartzen den.",
+          "label": "Baliogabetu \"Erakutsi emaitza\" botoia",
+          "description": "Opzio honek adierazten du \"Erakutsi emaitza\" botoia erakutsi behar den galdera guztietan, bat ere ez edo galdera bakoitzerako ezartzen den.",
           "options": [
             {
               "label": "Altibatuta"
@@ -267,8 +269,8 @@
           ]
         },
         {
-          "label": "Ezeztatu \"Saiatu berriro\" botoia",
-          "description": "Aukera honen bidez adierazten ahal da  \"Saiatu berriro\" botoia  erakutsi behar den galdera guztietan, bat ere ez edo galdera bakoitzerako ezartzen den.",
+          "label": "Baliogabetu \"Saiatu berriro\" botoia",
+          "description": "Aukera honen bidez adierazten ahal da \"Saiatu berriro\" botoia erakutsi behar den galdera guztietan, bat ere ez edo galdera bakoitzerako ezartzen den.",
           "options": [
             {
               "label": "Aktibatuta"
@@ -280,7 +282,7 @@
         },
         {
           "label": "Hasi lasterbideen menua irekita dagoela",
-          "description": "Funtzio hau ezin da erabili iPadean Youtube iturriko  bideoekin."
+          "description": "Funtzio hau ezin da erabili iPadean Youtube iturriko bideoekin."
         },
         {
           "label": "Erakutsi 10 segundo atzera eramateko botoia"
@@ -296,7 +298,7 @@
       ]
     },
     {
-      "label": "Kokatu",
+      "label": "Mugatu",
       "fields": [
         {
           "label": "Interakzioaren titulua",
@@ -312,11 +314,11 @@
         },
         {
           "label": "Mututu titulua",
-          "default": "Mututu"
+          "default": "Mututu, une honetan mututu gabe"
         },
         {
-          "label": "Ez mututu titulua",
-          "default": "Ez mututu"
+          "label": "Ez mututuren titulua",
+          "default": "Zabaldu mikrofonoa, une honetan mutututa"
         },
         {
           "label": "Bideoaren kalitatea titulua",
@@ -357,6 +359,10 @@
         {
           "label": "Jarraitu botoiaren etiketa lehenetsia",
           "default": "Jarraitu bideoa"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "Ezarri erreprodukzio abiadura",
@@ -428,6 +434,11 @@
           "description": "@answered aldagaian erantzunen kopurua bistaratuko da."
         },
         {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered erantzundako galdera kopuruarekin ordezkatuko da."
+        },
+        {
           "label": "Bidali pantailaren informazioa",
           "default": "@answered galdera erantzun dituzu, egin klik azpian erantzunak bidaltzeko.",
           "description": "@answered aldagaian erantzundako galdera kopurua bistaratuko da."
@@ -462,7 +473,7 @@
         },
         {
           "label": "Bidali pantaila ilararen laburpena puntuazioa barne (bozgorailu-irakurgailuentzako)",
-          "default": "@minutes minutu eta @seconds segundo ondoren agertu den @question galderaren @total puntutik zuk @score lortu dituzu"
+          "default": "@minutes minutu eta @seconds segundo ondoren agertu den @question galderaren @total puntutik zuk @score puntu lortu duzu."
         },
         {
           "label": "Bidali pantaila ilararen laburpena puntuaziorik gabe (bozgorailu-irakurgailuentzako)",

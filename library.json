@@ -4,7 +4,7 @@
   "license": "MIT",
   "contentType": "Media",
   "majorVersion": 1,
-  "minorVersion": 0,
+  "minorVersion": 1,
   "patchVersion": 0,
   "machineName": "H5P.CurrikiInteractiveVideo",
   "author": "Waqar",
@@ -50,7 +50,7 @@
     {
       "machineName": "H5P.Video",
       "majorVersion": 1,
-      "minorVersion": 5
+      "minorVersion": 6
     },
     {
       "machineName": "H5P.DragNBar",
@@ -67,7 +67,7 @@
     {
       "machineName": "H5PEditor.CurrikiInteractiveVideo",
       "majorVersion": 1,
-      "minorVersion": 0
+      "minorVersion": 1
     }
   ]
 }
