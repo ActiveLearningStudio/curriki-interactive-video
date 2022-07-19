@@ -712,7 +712,7 @@
 .h5p-interactive-video .h5p-chooser.h5p-endscreens.h5p-show * {
   visibility: visible;
 }
-.h5p-interactive-video .h5p-chooser > h3 {
+.h5p-interactive-video .h5p-chooser > h2 {
   margin: 0 0 8px 0;
   padding: 8px 24px 8px 12px;
   font-size: 19px;
@@ -794,7 +794,7 @@
   left: 0;
   max-width: none;
 }
-.h5p-interactive-video.h5p-minimal .h5p-chooser > h3 {
+.h5p-interactive-video.h5p-minimal .h5p-chooser > h2 {
   border-bottom-color: #8e8e8e;
 }
 
@@ -1223,13 +1223,15 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-.h5p-interactive-video .h5p-dialog-close {
+.h5p-interactive-video .h5p-dialog-close,
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-titlebar .h5p-sc-sound-control {
   position: absolute;
   top: 0.25em;
   right: 0.5em;
   cursor: pointer;
   padding: 0.25em 0.5em;
 }
+
 .h5p-interactive-video .h5p-dialog-close:focus {
   outline: 2px solid #179fff;
 }
@@ -1245,7 +1247,7 @@
 .h5p-interactive-video .h5p-dialog-close:active:before {
   color: #454545;
 }
-.h5p-interactive-video .h5p-dialog-inner {
+.h5p-interactive-video .h5p-dialog .h5p-dialog-inner {
   height: 100%;
   overflow: hidden;
   overflow-y: auto;

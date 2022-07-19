@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "Za prijevod se mora navesti izvorni jezik",
+                        "default": "en",
                         "description": "Must be a valid BCP 47 language tag. If 'Subtitles' is the type of text track selected, the source language of the track must be defined."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "Grafika",
                     "fields": [
                       {
-                        "label": "Boja pozadine"
+                        "label": "Boja pozadine",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "Box shadow",
@@ -312,11 +314,11 @@
         },
         {
           "label": "Naziv za utišaj",
-          "default": "Utišaj"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "Naziv za isključi utišavanje",
-          "default": "Isključi utišavanje"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "Nazv za video kvalitet",
@@ -357,6 +359,10 @@
         {
           "label": "Default label for continue video button",
           "default": "Nastavi sa videom"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "Set playback rate",
@@ -431,6 +437,11 @@
           "label": "Submit screen information",
           "default": "Odgovorili ste na @answered pitanja, klikni ispod i pošalji ih.",
           "description": "@answered će biti zamijenjeno sa brojem odgovorenih pitanja."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered will be replaced by the number of answered questions."
         },
         {
           "label": "Submit screen information for missing answers",

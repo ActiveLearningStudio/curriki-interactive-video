@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "Source language, must be defined for subtitles",
+                        "default": "en",
                         "description": "Must be a valid BCP 47 language tag. If 'Subtitles' is the type of text track selected, the source language of the track must be defined."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "Visuals",
                     "fields": [
                       {
-                        "label": "Background color"
+                        "label": "Background color",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "Box shadow",
@@ -312,11 +314,11 @@
         },
         {
           "label": "Mute title",
-          "default": "បិទសម្លេង"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "Unmute title",
-          "default": "បើកសម្លេង"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "Video quality title",
@@ -357,6 +359,10 @@
         {
           "label": "Default label for continue video button",
           "default": "បន្តវីដេអូ"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "Set playback rate",
@@ -430,6 +436,11 @@
         {
           "label": "Submit screen information",
           "default": "អ្នកបានឆ្លើយ @answered សំណួរ។ ចុចខាងក្រោមដើម្បីប្រគល់ចម្លើយរបស់អ្នក។",
+          "description": "@answered will be replaced by the number of answered questions."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
           "description": "@answered will be replaced by the number of answered questions."
         },
         {
