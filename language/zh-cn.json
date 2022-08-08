@@ -71,7 +71,7 @@
                   }
                 },
                 {
-                  "label": "Default text track",
+                  "label": "默认文本轨道",
                   "description": "If left empty or not matching any of the text tracks the first text track will be used as the default."
                 }
               ]
@@ -354,7 +354,7 @@
         },
         {
           "label": "Default label for adaptivity seek button",
-          "default": "Continue"
+          "default": "继续"
         },
         {
           "label": "继续播放的显示文字",
@@ -434,14 +434,14 @@
           "description": "@answered 为已回答数"
         },
         {
-          "label": "Submit screen information when submit button is disabled",
-          "default": "You have answered @answered questions.",
-          "description": "@answered will be replaced by the number of answered questions."
-        },
-        {
           "label": "提交画面中的已回答讯息文字",
           "default": "你已回答了 @answered 个问题，点击下方按钮提交你的答案。",
           "description": "@answered 为已回答数"
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered will be replaced by the number of answered questions."
         },
         {
           "label": "提交画面中的未回答讯息文字",

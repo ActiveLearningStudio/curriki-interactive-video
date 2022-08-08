@@ -151,7 +151,7 @@ const SelectorControl = function (name, options, selectedOption, menuItemType, l
   };
 
   // Create the popup which will contain the list of options
-  self.popup = element('h5p-chooser h5p-' + name, `<h3 id="${id}">${l10n[name]}</h3>`);
+  self.popup = element('h5p-chooser h5p-' + name, `<h2 id="${id}">${l10n[name]}</h2>`);
   self.popup.setAttribute('role', 'dialog');
 
   // Add a close button inside the popup
@@ -161,10 +161,10 @@ const SelectorControl = function (name, options, selectedOption, menuItemType, l
   // Create button for toggling the popup
   self.control = button('h5p-control h5p-' + name, ButtonType.ICON, l10n[name], toggle, 'div', 'button');
   self.control.setAttribute('aria-haspopup', 'true');
+
   // Create button for overlay controls
   self.overlayControl = button('h5p-minimal-button h5p-' + name, ButtonType.TEXT, l10n[name], toggle, 'div', 'menuitem');
   self.overlayControl.tabIndex = '-1';
-  self.overlayControl.classList.add('h5p-hide');
 
   // Generate initial options
   self.updateOptions(options);

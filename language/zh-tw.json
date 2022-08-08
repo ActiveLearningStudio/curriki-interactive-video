@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "語言別,必須為字幕定義",
+                        "default": "en",
                         "description": "需符合BCP 47語言標籤標示. 當軌道預設為 '字幕' 時, 則必須定義軌道語言別."
                       },
                       {
@@ -163,7 +164,8 @@
                     "label": "視覺效果",
                     "fields": [
                       {
-                        "label": "背景顏色"
+                        "label": "背景顏色",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "視窗陰影",
@@ -312,11 +314,11 @@
         },
         {
           "label": "靜音標題",
-          "default": "靜音"
+          "default": "Mute, currently unmuted"
         },
         {
           "label": "取消靜音標題",
-          "default": "取消靜音"
+          "default": "Unmute, currently muted"
         },
         {
           "label": "影像品質標題",
@@ -357,6 +359,10 @@
         {
           "label": "影像持續播放功能鈕預設名稱",
           "default": "繼續撥放影片"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "設置撥放速度",
@@ -430,6 +436,11 @@
         {
           "label": "Submit screen information",
           "default": "You have answered @answered questions, click below to submit your answers.",
+          "description": "@answered will be replaced by the number of answered questions."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
           "description": "@answered will be replaced by the number of answered questions."
         },
         {

@@ -61,6 +61,7 @@
                       },
                       {
                         "label": "소스 언어, 자막에 대해 정의되어야 함",
+                        "default": "en",
                         "description": "유효한 BCP 47 언어 태그여야 함. '자막'이 선택한 텍스트 트랙의 유형인 경우 트랙의 소스 언어를 정의해야 함."
                       },
                       {
@@ -118,7 +119,7 @@
                     "label": "환경에 따른 맞춤 설정",
                     "fields": [
                       {
-                        "label": "모두 맞춘 경우 행동 설정",
+                        "label": "모두 맞춘 경우 동작 설정",
                         "fields": [
                           {
                             "label": "찾아 갈 곳",
@@ -136,7 +137,7 @@
                         ]
                       },
                       {
-                        "label": "틀린 경우 행동 설정",
+                        "label": "틀린 경우 동작 설정",
                         "fields": [
                           {
                             "label": "찾아 갈 곳",
@@ -163,7 +164,8 @@
                     "label": "비주얼",
                     "fields": [
                       {
-                        "label": "배경색"
+                        "label": "배경색",
+                        "default": "rgb(255, 255, 255)"
                       },
                       {
                         "label": "상자 그림자",
@@ -240,7 +242,7 @@
       ]
     },
     {
-      "label": "행동 설정",
+      "label": "동작 설정",
       "fields": [
         {
           "label": "비디오 시작 위치",
@@ -312,11 +314,11 @@
         },
         {
           "label": "음소거 제목",
-          "default": "음소거"
+          "default": "음소거하기, 현재는 음소거 비활성화됨"
         },
         {
           "label": "음소거 해제 제목",
-          "default": "음소거 해제"
+          "default": "음소거 해제 하기, 현재는 "
         },
         {
           "label": "비디오 화질 제목",
@@ -357,6 +359,10 @@
         {
           "label": "비디오 계속하기 버튼의 기본 라벨",
           "default": "비디오 계속하기"
+        },
+        {
+          "label": "Default label for more player options",
+          "default": "More player options"
         },
         {
           "label": "재생 속도 설정",
@@ -426,6 +432,11 @@
           "label": "제출 화면 제목",
           "default": "@answered 질문들은 답변되었습니다.",
           "description": "@answered 는 답한 질문 수로 대체될 것."
+        },
+        {
+          "label": "Submit screen information when submit button is disabled",
+          "default": "You have answered @answered questions.",
+          "description": "@answered will be replaced by the number of answered questions."
         },
         {
           "label": "제출 화면 정보",
