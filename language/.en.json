@@ -249,6 +249,10 @@
           "description": "Enter timecode in the format M:SS"
         },
         {
+          "label": "End video at",
+          "description": "Enter timecode in the format M:SS"
+        },
+        {
           "label": "Auto-play video",
           "description": "Start playing the video automatically"
         },

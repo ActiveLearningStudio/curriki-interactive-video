@@ -39,6 +39,7 @@ const KEYBOARD_STEP_LENGTH_SECONDS = 5;
 function InteractiveVideo(params, id, contentData) {
   var self = this;
   var startAt;
+  var endAt;
   var loopVideo;
 
   // Inheritance
@@ -181,6 +182,12 @@ function InteractiveVideo(params, id, contentData) {
   startAt = (self.previousState && self.previousState.progress) ? Math.floor(self.previousState.progress) : 0;
   if (startAt === 0 && params.override && !!params.override.startVideoAt) {
     startAt = params.override.startVideoAt;
+    self.startAt = startAt;
+  }
+
+  if (endAt === undefined && params.override && !!params.override.endVideoAt) {
+    endAt = params.override.endVideoAt;
+    self.endAt = endAt;
   }
 
   // Keep track of interactions that have been answered (interactions themselves don't know about their state)
@@ -269,6 +276,7 @@ function InteractiveVideo(params, id, contentData) {
           disableRemotePlayback: true
         },
         startAt: startAt,
+        endAt: endAt,
         a11y: textTracks
       }
     }, self.contentId, undefined, undefined, {parent: self});
@@ -390,6 +398,20 @@ function InteractiveVideo(params, id, contentData) {
           if (self.controls.$play.is(":focus")) {
             self.controls.$play.blur();
             self.controls.$play.focus();
+          }
+
+          let currentTime = self.video.getCurrentTime();
+          // restrict seeking video < startAt
+          if ((self.startAt && currentTime < self.startAt)) {
+            self.seek(self.startAt)
+            self.timeUpdate(self.startAt, true);
+            return;
+          }
+
+          if ((self.endAt && currentTime > self.endAt)) {
+            self.seek(self.getDuration())
+            self.timeUpdate(self.getDuration(), true);
+            return;
           }
 
           self.timeUpdate(self.video.getCurrentTime());
@@ -2368,10 +2390,24 @@ InteractiveVideo.prototype.attachControls = function ($wrapper) {
       self.$overlay.addClass('h5p-visible');
     },
     slide: function (event, ui) {
-      const isKeyboardNav = isKey(event, [Keys.ARROW_LEFT, Keys.ARROW_RIGHT]);
       let time = ui.value;
+      let exceededTimeLimit = false;
 
-      if (isKeyboardNav) {
+      // restrict seeking video < startAt
+      if ((self.startAt && time < self.startAt)) {
+        time = self.startAt;
+        exceededTimeLimit = true;
+        self.timeUpdate(time, true);
+      }
+
+      if ((self.endAt && time > self.endAt)) {
+        time = self.getDuration();
+        exceededTimeLimit = true;
+        self.timeUpdate(time, true);
+      }
+
+      const isKeyboardNav = isKey(event, [Keys.ARROW_LEFT, Keys.ARROW_RIGHT]);
+      if (isKeyboardNav && !exceededTimeLimit) {
         const moveforward = isKey(event, [Keys.ARROW_RIGHT]);
         const endTime = self.getDuration();
         time = moveforward ?
@@ -3098,6 +3134,20 @@ InteractiveVideo.prototype.timeUpdate = function (time, skipNextTimeUpdate) {
     if (self.currentState === H5P.Video.PLAYING ||
       (self.currentState === H5P.Video.BUFFERING && self.lastState === H5P.Video.PLAYING)
     ) {
+      let currentTime = self.video.getCurrentTime();
+      // restrict playing video < startAt
+      if ((self.startAt && currentTime < self.startAt)) {
+        self.seek(self.startAt)
+        self.timeUpdate(self.startAt, true);
+        return;
+      }
+      // restrict playing video > endAt
+      if ((self.endAt && currentTime > self.endAt)) {
+        self.seek(self.getDuration())
+        self.timeUpdate(self.getDuration(), true);
+        return;
+      }
+
       self.timeUpdate(self.video.getCurrentTime());
     }
   }, 40); // 25 fps
@@ -3621,6 +3671,15 @@ InteractiveVideo.prototype.play = function () {
  */
 InteractiveVideo.prototype.seek = function (time) {
   this.nextInteractionToShow = this.nextInteractionToHide = undefined; // Reset next interactions on seek
+  // restrict seeking video < startAt
+  if ((this.startAt && time < this.startAt)) {
+     time = this.startAt;
+  }
+
+  if ((this.endAt && time > this.endAt)) {
+    time = this.getDuration();
+  }
+
   this.video.seek(time);
 };
 
